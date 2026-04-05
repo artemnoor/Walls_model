@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bidirectional Template Wall Follower</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel controls">
+        <h1>Двунаправленное шаблонное следование</h1>
+        <p class="sub">
+          Загрузите изображение, кликните цвет стены, выделите эталонный прямоугольник и запустите трекинг.
+        </p>
+
+        <label class="file">
+          <span>Изображение</span>
+          <input id="imageInput" type="file" accept="image/*" />
+        </label>
+
+        <div class="group">
+          <label>Шаг (px) <input id="stepPx" type="range" min="1" max="6" value="2" /></label>
+          <output id="stepPxVal">2</output>
+        </div>
+
+        <div class="group">
+          <label>Допуск цвета <input id="colorTolerance" type="range" min="5" max="60" value="28" /></label>
+          <output id="colorToleranceVal">28</output>
+        </div>
+
+        <div class="group">
+          <label>Порог совпадения <input id="minScore" type="range" min="0.3" max="0.9" step="0.01" value="0.52" /></label>
+          <output id="minScoreVal">0.52</output>
+        </div>
+
+        <div class="actions">
+          <button id="pickModeBtn">1) Пикнуть цвет</button>
+          <button id="runBtn">2) Запустить</button>
+          <button id="clearBtn">Сброс</button>
+        </div>
+
+        <div class="chip-row">
+          <span>Цвет:</span>
+          <span id="pickedColorChip" class="chip">—</span>
+        </div>
+
+        <pre id="status">Ожидание данных...</pre>
+      </section>
+
+      <section class="panel viewer">
+        <canvas id="canvas" width="1000" height="700"></canvas>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
